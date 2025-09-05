@@ -2,6 +2,7 @@
 
 #include "block.h"
 #include "enums.h"
+#include "waiter.h"
 
 #include <iostream>
 #include <vector>
@@ -20,25 +21,32 @@ int main(){
     InitWindow(WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
     SetTargetFPS(60);
 
+    waiter blockspawn = waiter();
+    waiter blockdelete = waiter();
+    blockspawn.wait(1);
+    blockdelete.wait(5);
+
     while (!WindowShouldClose()){
         // perform calculations and such before drawing
-        
-        static int timer = GetTime();
 
         for (block *b : blocks){
-            if (blocks.capacity() > 3){
+            if (blocks.capacity() > 3 && blockdelete.update()){
                 blocks.pop_back();
                 delete b;
+                blockdelete.wait(5);
             }
         }
 
         Vector2 randomSize = {static_cast<float>(GetRandomValue(randomMinS, randomMaxS)), static_cast<float>(GetRandomValue(randomMinS, randomMaxS))};
         Vector2 randomPos = {static_cast<float>(GetRandomValue(1, WIN_WIDTH)), static_cast<float>(GetRandomValue(1, WIN_HEIGHT))};
 
-        block *NewBlock = new block(randomPos, randomSize, WHITE, SNAKE_BODY);
         
 
-        blocks.push_back(NewBlock);
+        if (blockspawn.update()){
+            block *NewBlock = new block(randomPos, randomSize, WHITE, SNAKE_BODY);
+            blocks.push_back(NewBlock);
+            blockspawn.wait(1);
+        }
 
         // draw to screen
         BeginDrawing();
@@ -47,11 +55,6 @@ int main(){
 
         for (block *b : blocks) {
             b->draw();
-        }
-
-        if (GetTime() - timer > 3){
-            NewBlock->draw();
-            timer = GetTime();
         }
 
         EndDrawing();

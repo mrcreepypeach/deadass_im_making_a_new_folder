@@ -1,4 +1,4 @@
-{
+/*{
 	"version": "2.0.0",
 	"tasks": [
 		{
@@ -11,9 +11,15 @@
 				"-g",
 				"-o",
 				"${workspaceFolder}/build/${fileWorkspaceFolderBasename}.exe",
+				
+				// includes
 				"-IC:\\raylib\\include",
 				"-I${workspaceFolder}/include",
+
+				// library paths
 				"-LC:\\raylib\\lib",
+
+				// link libraries
 				"-lraylib",
 				"-lopengl32",
 				"-lgdi32",
@@ -21,7 +27,7 @@
 
 			],
 			"options": {
-				"cwd": "${fileDirname}"
+				"cwd": "${workspaceFolder}"
 			},
 			"problemMatcher": [
 				"$gcc"
@@ -44,4 +50,57 @@
 			}
 		}
 	]
+}*/
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "c++ g++ build with raylib",
+            "command": "C:\\MinGW\\bin\\g++.exe",
+            "args": [
+                "${workspaceFolder}/src/*.cpp",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-o",
+                "${workspaceFolder}/build/game.exe",
+
+                // Include paths
+                "-I${workspaceFolder}/include",
+                "-IC:/raylib/include",
+
+                // Library paths
+                "-LC:/raylib/lib",
+
+                // Link libraries
+                "-lraylib",
+                "-lopengl32",
+                "-lgdi32",
+                "-lwinmm"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "builds project with raylib using g++"
+        },
+        {
+            "label": "run executable",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/${workspaceFolderBasename}.exe",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            }
+        }
+    ]
 }
