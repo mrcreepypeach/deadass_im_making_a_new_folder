@@ -1,0 +1,29 @@
+#include <iostream>
+#include "raylib.h"
+#include "block.h"
+#include "enums.h"
+
+block::block(Vector2 p, Vector2 s, Color c, BLOCK_TYPE t)
+{
+    block::position = p;
+    block::size = s;
+    block::color = c;
+    block::type = t;
+    
+    std::cout << this << " block initialized\n";
+}
+
+block::~block(){
+    std::cout << this << " block deleted from memory\n";
+}
+
+void block::draw()
+{
+    if (!drawn){
+        DrawRectangleV(block::position, block::size, block::color);
+        drawn = true;
+    }
+    else{
+        std::cout << "Block " << this << " is already drawn\n"; 
+    }
+}

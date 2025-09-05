@@ -6,11 +6,11 @@
 			"label": "c++ g++ build with raylib",
 			"command": "C:\\MinGW\\bin\\g++.exe",
 			"args": [
+				"${workspaceFolder}/src/*.cpp",
 				"-fdiagnostics-color=always",
 				"-g",
-				"${file}",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"${workspaceFolder}/build/${fileWorkspaceFolderBasename}.exe",
 				"-IC:\\raylib\\include",
 				"-I${workspaceFolder}/include",
 				"-LC:\\raylib\\lib",
@@ -35,7 +35,7 @@
 		{
 			"label": "run executable",
       		"type": "shell",
-      		"command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      		"command": "${workspaceFolder}/build/${workspaceFolderBasename}.exe",
       		"presentation": {
         		"echo": true,
         		"reveal": "always",

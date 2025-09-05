@@ -5,11 +5,14 @@
 
 class block{
 public:
+    bool drawn = false;
+
     Vector2 position;
     Vector2 size;
     Color color;
     BLOCK_TYPE type;
 
     block(Vector2 p, Vector2 s, Color c, BLOCK_TYPE t);
+    ~block();
     void draw();
 };
