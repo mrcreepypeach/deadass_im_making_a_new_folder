@@ -23,8 +23,8 @@ int main(){
 
     waiter blockspawn = waiter();
     waiter blockdelete = waiter();
-    blockspawn.wait(1);
-    blockdelete.wait(5);
+    blockspawn.wait(.01);
+    blockdelete.wait(9999);
 
     while (!WindowShouldClose()){
         // perform calculations and such before drawing
