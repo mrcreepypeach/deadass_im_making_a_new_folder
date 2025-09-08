@@ -19,11 +19,5 @@ block::~block(){
 
 void block::draw()
 {
-    if (!drawn){
-        DrawRectangleV(block::position, block::size, block::color);
-        // drawn = true;
-    }
-    else{
-        std::cout << "Block " << this << " is already drawn\n"; 
-    }
+    DrawRectangleV(block::position, block::size, block::color);
 }

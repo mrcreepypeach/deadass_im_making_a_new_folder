@@ -5,8 +5,6 @@
 
 class block{
 public:
-    bool drawn = false;
-
     Vector2 position;
     Vector2 size;
     Color color;
