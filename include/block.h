@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "enums.h"
+#include <vector>
 
 class block{
 public:
@@ -10,7 +11,8 @@ public:
     Color color;
     BLOCK_TYPE type;
 
-    block(Vector2 p, Vector2 s, Color c, BLOCK_TYPE t);
+    block(Vector2 p, BLOCK_TYPE t, Vector2 s = Vector2One(), Color c = GREEN);
     ~block();
     void draw();
+    std::vector<block*> checkCollision(std::vector<block*> items);
 };

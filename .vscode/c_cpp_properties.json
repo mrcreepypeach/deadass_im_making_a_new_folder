@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include",
-                "C:\\raylib\\include"
+                "${workspaceFolder}/external/raylib/include"
             ],
             "defines": [
                 "_DEBUG",

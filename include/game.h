@@ -6,7 +6,7 @@
 
 class game{
     private:
-
+        bool started;
 
 
     public:

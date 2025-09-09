@@ -7,14 +7,27 @@
 #include <vector>
 #include <memory>
 
-player::player()
+player::player(Vector2 spawnPosition = Vector2One())
 {
-
+    this->playerHead = new block(spawnPosition, SNAKE_HEAD);
+    this->allowedInput = true;
 }
+
 player::~player(){
 
 }
 
-std::vector<block*> player::getPlayerBlocks(){
+void player::allowPlayerInput(){this->allowedInput = true;}
+
+void player::disallowPlayerInput(){this->allowedInput = false;}
+
+block *player::getBlock(block *b)
+{
+    for (block* a : this->playerParts){
+        if (a == b){return b;}
+    }
     
+    return nullptr;
 }
+
+std::vector<block *> player::getPlayerBlocks(){return this->playerParts;}

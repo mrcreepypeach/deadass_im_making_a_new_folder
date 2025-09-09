@@ -3,6 +3,7 @@
 #include "block.h"
 #include "enums.h"
 #include "waiter.h"
+#include "player.h"
 
 #include <iostream>
 #include <vector>
@@ -24,7 +25,8 @@ int main(){
     waiter blockspawn = waiter();
     waiter blockdelete = waiter();
     blockspawn.wait(.01);
-    blockdelete.wait(9999);
+
+    player Player = player();
 
     while (!WindowShouldClose()){
         // perform calculations and such before drawing
@@ -43,7 +45,7 @@ int main(){
         
 
         if (blockspawn.update()){
-            block *NewBlock = new block(randomPos, randomSize, WHITE, SNAKE_BODY);
+            block *NewBlock = new block(randomPos, SNAKE_BODY, randomSize, WHITE);
             blocks.push_back(NewBlock);
             blockspawn.wait(1);
         }

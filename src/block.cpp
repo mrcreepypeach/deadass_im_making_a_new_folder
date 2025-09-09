@@ -1,7 +1,9 @@
 #include <iostream>
 #include "raylib.h"
+#include "raymath.h"
 #include "block.h"
 #include "enums.h"
+#include <vector>
 
 block::block(Vector2 p, Vector2 s, Color c, BLOCK_TYPE t)
 {
@@ -19,5 +21,18 @@ block::~block(){
 
 void block::draw()
 {
-    DrawRectangleV(block::position, block::size, block::color);
+    DrawRectangleV(this->position, this->size, this->color);
+}
+
+std::vector<block *> block::checkCollision(std::vector<block *> items)
+{
+    std::vector<block *> result;
+    for (block *b : items){
+        
+        if (Vector2Distance(b->position, this->position) <= 1){
+            result.push_back(b);
+        }
+    }
+    
+    return result;
 }
