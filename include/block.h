@@ -13,6 +13,6 @@ public:
 
     block(Vector2 p, BLOCK_TYPE t, Vector2 s = Vector2One(), Color c = GREEN);
     ~block();
-    void draw();
+    inline void draw();
     std::vector<block*> checkCollision(std::vector<block*> items);
 };

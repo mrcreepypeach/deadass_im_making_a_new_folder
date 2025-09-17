@@ -5,7 +5,7 @@
 #include "enums.h"
 #include <vector>
 
-block::block(Vector2 p, Vector2 s, Color c, BLOCK_TYPE t)
+block::block(Vector2 p, BLOCK_TYPE t, Vector2 s, Color c)
 {
     block::position = p;
     block::size = s;
@@ -15,11 +15,12 @@ block::block(Vector2 p, Vector2 s, Color c, BLOCK_TYPE t)
     std::cout << this << " block initialized\n";
 }
 
-block::~block(){
+block::~block()
+{
     std::cout << this << " block deleted from memory\n";
 }
 
-void block::draw()
+inline void block::draw()
 {
     DrawRectangleV(this->position, this->size, this->color);
 }
