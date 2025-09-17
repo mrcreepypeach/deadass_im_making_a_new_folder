@@ -25,4 +25,8 @@ void game::displayGame()
             DrawText(gameDisplayStrings.at(STARTED).c_str(), centeredXText, centeredYText, 5, WHITE);
         }
     }
+
+    if (IsKeyPressed(KEY_SPACE)){
+        
+    }
 }
