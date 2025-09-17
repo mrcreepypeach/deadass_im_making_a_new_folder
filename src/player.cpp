@@ -1,13 +1,15 @@
 #include "player.h"
 
 #include "raylib.h"
+#include "raymath.h"
 #include "block.h"
 #include "game.h"
+#include <string>
 #include "enums.h"
 #include <vector>
 #include <memory>
 
-player::player(Vector2 spawnPosition = Vector2One())
+player::player(Vector2 spawnPosition)
 {
     this->playerHead = new block(spawnPosition, SNAKE_HEAD);
     this->allowedInput = true;

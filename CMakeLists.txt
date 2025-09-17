@@ -5,11 +5,13 @@ project(deadass_im_making_a_new_folder)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Collect all .cpp files in src/
-file(GLOB SOURCES "src/*.cpp")
+add_executable(${PROJECT_NAME}
+    src/main.cpp
+    src/game.cpp
+    src/player.cpp
+    src/block.cpp
+)
 
-# Create the executable from all sources
-add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Include headers
 target_include_directories(${PROJECT_NAME} PRIVATE
