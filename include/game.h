@@ -25,19 +25,17 @@ class game{
     };
 
     const int centeredXText = (GetScreenWidth() / 2);
-    const int centeredYText = (GetScreenHeight() / 2) + GetScreenHeight() / 10;
+    const int centeredYText = (GetScreenHeight() / 2) - GetScreenHeight() / 10;
     
     // game data related things
 
-    
+    player Player = player();
     std::vector<block> currentApples {};
 
     public:
 
     game();
     ~game();
-
-    
 
     // Getters and Setters
 
