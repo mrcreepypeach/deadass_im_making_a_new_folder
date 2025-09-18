@@ -3,6 +3,8 @@
 #include "raymath.h"
 #include "block.h"
 #include "enums.h"
+#include "tile.h"
+
 #include <vector>
 
 block::block(Vector2 p, BLOCK_TYPE t, Vector2 s, Color c) : position{p}, size{s}, color{c}, type{t}

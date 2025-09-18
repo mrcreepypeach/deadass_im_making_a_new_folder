@@ -3,6 +3,8 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "enums.h"
+#include "tile.h"
+
 #include <vector>
 
 class block{
