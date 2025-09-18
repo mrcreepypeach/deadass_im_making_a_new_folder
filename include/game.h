@@ -9,6 +9,8 @@
 #include <map>
 #include <vector>
 
+/// @brief Base game class which holds current game objects and data, including the current player
+
 class game{
     private:
     enum status{
@@ -29,16 +31,18 @@ class game{
     
     // game data related things
 
-    player Player = player();
     std::vector<block> currentApples {};
 
     public:
+
+    player Player = player();
 
     game();
     ~game();
 
     // Getters and Setters
 
+/// @brief Toggles the current state of the game. Does nothing if GameStatus is TITLE.
     inline void togglePause(){
         if (GameStatus == TITLE){return;}
 
@@ -49,11 +53,21 @@ class game{
             GameStatus = PAUSED;
         }
     }
-    inline status getStatus(){return GameStatus;}
+    /// @brief Obtain current game status.
+    /// @return status enum
+    inline status getStatus() const {return GameStatus;}
+
+    /// @brief Obtains a reference to current apples on the map
+    /// @return reference to a vector of apple blocks
+    inline std::vector<block>& getApples() {return currentApples;}
+    
+    /// @brief Change the current status of the game
+    /// @param NewStat status to change to
     inline void setStatus(status NewStat){GameStatus = NewStat;}
 
     // Not inline functions
 
+    /// @brief Draw current game objects to the screen depending on GameStatus
     void displayGame();
 
 };

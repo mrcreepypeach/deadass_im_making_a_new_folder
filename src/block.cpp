@@ -5,13 +5,8 @@
 #include "enums.h"
 #include <vector>
 
-block::block(Vector2 p, BLOCK_TYPE t, Vector2 s, Color c)
-{
-    block::position = p;
-    block::size = s;
-    block::color = c;
-    block::type = t;
-    
+block::block(Vector2 p, BLOCK_TYPE t, Vector2 s, Color c) : position{p}, size{s}, color{c}, type{t}
+{   
     std::cout << this << " block initialized\n";
 }
 
