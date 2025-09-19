@@ -10,6 +10,7 @@ add_executable(${PROJECT_NAME}
     src/game.cpp
     src/player.cpp
     src/block.cpp
+    src/tile.cpp
 )
 
 

@@ -32,6 +32,11 @@ int main(){
         BeginDrawing();
 
         ClearBackground(BLACK);
+
+        if (Game.getStatus() == game::STARTED){
+            
+        }
+
         Game.displayGame();
 
         EndDrawing();

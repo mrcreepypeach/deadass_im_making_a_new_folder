@@ -4,36 +4,25 @@
 #include "raylib.h"
 #include "block.h"
 #include "player.h"
+#include "tile.h"
 
 #include <string>
+#include <memory>
 #include <map>
 #include <vector>
 
 /// @brief Base game class which holds current game objects and data, including the current player
 
 class game{
-    private:
+    public:
+
     enum status{
         STARTED,
         PAUSED,
         TITLE
-    };    
-
-    status GameStatus {TITLE};
-    const std::map<status, std::string> gameDisplayStrings {
-        {TITLE, std::string("Press space to begin")},
-        {STARTED, std::string("SNAKE")},
-        {PAUSED, std::string("Press space to continue")}
     };
 
-    const int centeredXText = (GetScreenWidth() / 2);
-    const int centeredYText = (GetScreenHeight() / 2) - GetScreenHeight() / 10;
-    
-    // game data related things
-
-    std::vector<block> currentApples {};
-
-    public:
+    bool active = false;
 
     player Player = player();
 
@@ -59,7 +48,7 @@ class game{
 
     /// @brief Obtains a reference to current apples on the map
     /// @return reference to a vector of apple blocks
-    inline std::vector<block>& getApples() {return currentApples;}
+    inline std::map<block, tile>& getApples() {return currentApples;}
     
     /// @brief Change the current status of the game
     /// @param NewStat status to change to
@@ -67,8 +56,32 @@ class game{
 
     // Not inline functions
 
+    /// @brief Generate a map layout for the game with given parameters
+    /// @param size Size of the map (default is 20x20)
+    /// @param borderDepth How deep the border for the map will generate (default is 1)
+    /// @param hasObstacles Says if the map should generate tiles of obstacles (default is false)
+    void createMap(Vector2 size = {20,20}, int borderDepth = 1, bool hasObstacles = false);
+
     /// @brief Draw current game objects to the screen depending on GameStatus
     void displayGame();
+
+    private:
+    
+    status GameStatus {TITLE};
+    const std::map<status, std::string> gameDisplayStrings {
+        {TITLE, std::string("Press space to begin")},
+        {STARTED, std::string("SNAKE")},
+        {PAUSED, std::string("Press space to continue")}
+    };
+
+    const int centeredXText = (GetScreenWidth() / 2);
+    const int centeredYText = (GetScreenHeight() / 2) - GetScreenHeight() / 10;
+    
+    // game data related things
+
+    std::vector<std::vector<std::unique_ptr<tile>>> Map {}; // a 2d vector of smart pointers to tiles
+
+    std::map<block, tile> currentApples {}; // current apples on the map located in a dictionary map
 
 };
 
