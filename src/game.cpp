@@ -75,6 +75,15 @@ void game::displayGame()
         case STARTED:
         {
             DrawText(gameDisplayStrings.at(STARTED).c_str(), centeredXText, centeredYText, 5, WHITE);
+
+            // Computing where everything ingame should be
+            // Start with the map
+            
+            for (int i = 0; i < Map.size(); i++){
+                for (int j = 0; j < Map[i].size(); j++){
+                    Map[i][j].get()->draw(); // for debug
+                }
+            }
         }
     }
 
@@ -100,14 +109,7 @@ void game::displayGame()
 
         if (this->getStatus() != TITLE){
 
-            // Computing where everything ingame should be
-            // Start with the map
-
-            for (int i = 0; i < Map.size(); i++){
-                for (int j = 0; j < Map[i].size(); j++){
-                    Map[i][j].get()->draw(); // for debug
-                }
-            }
+            
 
 
 

@@ -54,6 +54,8 @@ class game{
     /// @param NewStat status to change to
     inline void setStatus(status NewStat){GameStatus = NewStat;}
 
+    inline const std::vector<std::vector<std::unique_ptr<tile>>>& getMap() const {return Map;} // this causes an error for some reason
+
     // Not inline functions
 
     /// @brief Generate a map layout for the game with given parameters

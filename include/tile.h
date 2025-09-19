@@ -31,7 +31,6 @@ class tile{
             case tile_type::OBSTACLE: c = BLUE; break;
         }
         DrawRectangleLines(position.x, position.y, size.x, size.y, c);
-        std::cout << this << " drawn\n";
     }
 
     private:

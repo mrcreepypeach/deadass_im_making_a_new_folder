@@ -15,9 +15,6 @@ const int WIN_WIDTH {1280};
 const int WIN_HEIGHT {800};
 const char WIN_NAME[] {"Snake Game"};
 
-const int randomMinS {10};
-const int randomMaxS {20};
-
 int main(){
 
     InitWindow(WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
@@ -32,9 +29,17 @@ int main(){
         BeginDrawing();
 
         ClearBackground(BLACK);
-
+        /*
         if (Game.getStatus() == game::STARTED){
-            
+            Game.createMap();
+        } 
+        */
+
+        if (IsKeyDown(KEY_LEFT_CONTROL)){
+            Game.createMap();
+        }
+        if (IsKeyDown(KEY_LEFT_SHIFT)){
+            std::cout << Game.getMap().size() << "\n";
         }
 
         Game.displayGame();
